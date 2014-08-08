@@ -13,12 +13,13 @@
 
 $languages = array('nl','fr','en');
 $locale = Request::segment(1);
-if(in_array($locale, $languages)){
-   \App::setLocale($locale);
-} else {
-   $locale = null;
+if (empty($locale)) { 
+   \App::setLocale('en');
 }
 
+if(in_array($locale, $languages)){
+   \App::setLocale($locale);
+}
    // \App::setLocale('nl');
 Route::group(array('prefix' => $locale), function()
       {
@@ -27,8 +28,8 @@ Route::group(array('prefix' => $locale), function()
       //Route::get('{slug}', 'PageController@showPage');
 
       Route::get('/', array('as' => 'home', 'uses'=>'HomeController@getIndex'));
-      Route::post('form',  array('before' => 'csrf','uses'=>'HomeController@postIndex'));
-
-      Route::get('download', 'HomeController@getDownload');
-      Route::post('upload', 'HomeController@postUpload');
 });
+
+Route::post('form',  array('before' => 'csrf','uses'=>'HomeController@postIndex'));
+Route::get('download', 'HomeController@getDownload');
+Route::post('upload', 'HomeController@postUpload');
