@@ -113,7 +113,7 @@ return array(
 	'redis' => array(
 		'cluster' => true,
 		'default' => array(
-			'host'     => 'tunnel.pagodabox.com',
+			'host'     => 'localhost',
 			'port'     => 6379,
 			'database' => 0,
 		),
