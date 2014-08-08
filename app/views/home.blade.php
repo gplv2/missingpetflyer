@@ -282,10 +282,10 @@ jQuery(function(){
 @section('content')
 	<div class="row" style="margin-top:30px;">
 		<div class="span8 offset2">
-			<h1 class="text-center">Missing Pet Poster maker</h1>
+			<h1 class="text-center">{{ trans('texts.title') }}</h1>
 			<div class="well text-center">
-				<p class="lead">This tool will help you print a poster so that you can find your pet quicker</p>
-				<p>Upload a picture of your pet and fill out the information to be placed on the poster</p>
+				<p class="lead">{{ trans('texts.description') }}</p>
+				<p >{{ trans('texts.uploadinstructions') }}</p>
 			</div>
 		</div>
 	</div>
@@ -294,18 +294,18 @@ jQuery(function(){
 			<div class="well text-center"  id="previewSpinner">
 				{{ Form::open(array('url' => 'form', 'id'=>'lostpetform','method' => 'post'))}}
 				  <fieldset>
-				    <legend>Fill out the form below <small>(This information will not be stored)</small></legend>
-				    <p><input type="text" name="header" class="span4" placeholder="Header" value="Missing pet" autofocus></p>
-				    <p><input type="text" name="name" class="span4" placeholder="Pet Name"></p>
-				    <p><input type="text" name="breed" class="span4" placeholder="Pet Breed"></p>
-				    <p><input type="text" name="color" class="span4" placeholder="Pet Color"></p>
-				    <p><input type="text" name="gender" class="span4" placeholder="Pet Gender"></p>
-				    <p><input type="text" name="date" class="span4" placeholder="Date Lost"></p>
-				    <p><textarea name="contact" class="span4" placeholder="Contact info"></textarea></p>
+				    <legend>{{ trans('texts.forminstructions') }}</legend>
+				    <p><input type="text" name="header" class="span4" placeholder="Header" value="{{ trans('texts.missing') }}" autofocus></p>
+				    <p><input type="text" name="name" class="span4" placeholder="{{ trans('texts.petname') }}"></p>
+				    <p><input type="text" name="breed" class="span4" placeholder="{{ trans('texts.petbreed') }}"></p>
+				    <p><input type="text" name="color" class="span4" placeholder="{{ trans('texts.petcolor') }}"></p>
+				    <p><input type="text" name="gender" class="span4" placeholder="{{ trans('texts.petgender') }}"></p>
+				    <p><input type="text" name="date" class="span4" placeholder="{{ trans('texts.petlost') }}"></p>
+				    <p><textarea name="contact" class="span4" placeholder="{{ trans('texts.petinfo') }}"></textarea></p>
 						
 					<p><span class="btn btn-large btn-block fileinput-button">
 					    <i class="icon-picture"></i>
-					    <span>Upload a picture of the pet</span>
+					    <span>{{ trans('texts.uploadpicture') }}</span>
 					    <!-- The file input field used as target for the file upload widget -->
 					    <input id="fileupload" accept="image/*" type="file" name="file">
 					</span></p>
@@ -323,7 +323,7 @@ jQuery(function(){
 					<input type="hidden" id="h" name="h" />
 
 					<br>
-				    <p><button type="submit" class="btn btn-large"><i class="icon-eye"></i> Preview and print the poster</button></p>
+				    <p><button type="submit" class="btn btn-large"><i class="icon-eye"></i> {{ trans('texts.previewprint') }}</button></p>
 				  </fieldset>
 				{{ Form::close();}}
 			</div>
@@ -342,7 +342,7 @@ jQuery(function(){
 			</div>
 			<div class="well text-center"  id="imageContainer">
 				<p><img id="previewContainer" src="img/dog-poster.jpg"></p>
-				<p><a href="{{url('download')}}" target="_blank" id="downloadBtn" class="btn btn-block"><i class="icon-download"></i> Download Poster</a></p>
+				<p><a href="{{url('download')}}" target="_blank" id="downloadBtn" class="btn btn-block"><i class="icon-download"></i> {{ trans('texts.downloadposter') }}</a></p>
 			</div>
 			
 		</div
