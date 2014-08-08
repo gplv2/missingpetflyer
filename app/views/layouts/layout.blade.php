@@ -7,6 +7,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Missing pet flyer generator</title>
+        <title></title>
         <meta name="author" content="Maks Surguy">
         <meta name="description" content="Print out a poster for your lost pet, missing dog or cat template poster">
         <meta name="viewport" content="width=device-width">
@@ -47,11 +48,11 @@
 			      <div class="span12">
 			      	<div class="pull-right">
 
-			      		<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://missingpetflyer.com" data-text="Missing pet poster/flyer maker" data-via="msurguy" data-count="none" data-hashtags="missingpet" data-dnt="true">Tweet</a>
+			      		<a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ Request::path() }}" data-text="Missing pet poster/flyer maker" data-via="findbackpets" data-count="none" data-hashtags="missingpet" data-dnt="true">Tweet</a>
 						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-						<div class="fb-like" data-href="http://missingpetflyer.com/" data-send="false" data-width="300" data-show-faces="false" data-font="arial"></div>
+						<div class="fb-like" data-href="{{ Request::path() }}" data-send="false" data-width="300" data-show-faces="false" data-font="arial"></div>
 					</div>
-			        <p>Created by <a href="http://twitter.com/msurguy" target="_blank">@msurguy</a>. <i class="icon-attention"></i> No information that you enter is saved or stored on this site.</p>
+			        <p>Forked from <a href="http://twitter.com/msurguy" target="_blank">@msurguy</a> by <a href="http://bitless.be" target="_blank">BitLess</a>.  <i class="icon-attention"></i> {{ trans('texts.privacynote') }}</p>
 			      </div>
 			    </div>
 			</div>

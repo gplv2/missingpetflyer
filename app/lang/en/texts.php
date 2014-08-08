@@ -30,4 +30,5 @@ return array(
 	"uploadpicture" => "Upload picture of the pet",
 	"downloadposter" => "Download poster",
 	"previewprint" => "Preview and print the poster",
+	"privacynote" => "Some data is stored to provide the api and mapping services",
 );
