@@ -330,14 +330,14 @@ jQuery(function(){
 		</div>
 		<div class="span6">
 			<div class="well">
-				<p class="lead"><i class="icon-attention"></i> Tips on where to place your poster:</p>
+				<p class="lead"><i class="icon-attention"></i> {{ trans('texts.tips') }}:</p>
 				<ul>
-					<li>High-traffic streets</li>
-					<li>Libraries</li>
-					<li>Coffee Shops</li>
-					<li>Gas Stations</li>
-					<li>Drug Stores</li>
-					<li>Schools</li>
+					<li>{{ trans('texts.busystreets') }}</li>
+					<li>{{ trans('texts.libraries') }}</li>
+					<li>{{ trans('texts.coffeeshops') }}</li>
+					<li>{{ trans('texts.gasstations') }}</li>
+					<li>{{ trans('texts.drugstores') }}</li>
+					<li>{{ trans('texts.schools') }}</li>
 				</ul>
 			</div>
 			<div class="well text-center"  id="imageContainer">

@@ -11,7 +11,7 @@
 |
 */
 
-$languages = array('nl','fr');
+$languages = array('nl','fr','en');
 $locale = Request::segment(1);
 if(in_array($locale, $languages)){
    \App::setLocale($locale);
@@ -19,15 +19,16 @@ if(in_array($locale, $languages)){
    $locale = null;
 }
 
+   // \App::setLocale('nl');
 Route::group(array('prefix' => $locale), function()
       {
       //Route::get('/', array('as' => 'home', function(){ //Do something  }));
       //Route::get('news', array('as' => 'news', 'uses' => 'NewsController@showIndex'));
       //Route::get('{slug}', 'PageController@showPage');
 
-   Route::get('/', 'HomeController@getIndex');
-   Route::get('download', 'HomeController@getDownload');
+      Route::get('/', array('as' => 'home', 'uses'=>'HomeController@getIndex'));
+      Route::post('form',  array('before' => 'csrf','uses'=>'HomeController@postIndex'));
 
-   Route::post('form',  array('before' => 'csrf','uses'=>'HomeController@postIndex'));
-   Route::post('upload', 'HomeController@postUpload');
+      Route::get('download', 'HomeController@getDownload');
+      Route::post('upload', 'HomeController@postUpload');
 });
