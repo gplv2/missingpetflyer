@@ -1,6 +1,9 @@
 @section('styles')
 <link rel="stylesheet" href="{{url('css/jquery.Jcrop.min.css')}}" type="text/css" />
-<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css" />
+<!-- <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css" /> -->
+<link rel="stylesheet" href="{{url('js/jquery-ui/jquery-ui.min.css')}}" />
+<link rel="stylesheet" href="{{url('js/OpenLayers/theme/default/style.css')}}" type="text/css" />
+<link rel="stylesheet" href="{{url('css/geostyle.css')}}" type="text/css" />
 
 <style type="text/css">
 html, body {
@@ -142,8 +145,10 @@ html, body {
 
 @section('scripts')
 <script src="{{ url('js/vendor/spin.min.js')}}"></script>
+<script src="{{ url('js/OpenLayers/OpenLayers.mobile.js')}}"></script>
+<script src="{{ url('js/geolocation.js')}}"></script>
 <!-- <script src="{{ url('js/vendor/jquery.ui.widget.js')}}"></script>-->
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+<script src="{{ url('js/jquery-ui/jquery-ui.js')}}"></script>
 <script src="{{ url('js/vendor/jquery.iframe-transport.js')}}"></script>
 <script src="{{ url('js/vendor/jquery.fileupload.js')}}"></script>
 <script src="{{ url('js/vendor/jquery.fileupload-process.js')}}"></script>
@@ -310,6 +315,11 @@ jQuery(function(){
 				    <p><input type="text" id='date' name="date" class="span4" placeholder="{{ trans('texts.petlost') }}"></p>
 				    <p><input type="text" name="email" class="span4" placeholder="{{ trans('texts.email') }}"></p>
 				    <p><textarea name="contact" class="span4" placeholder="{{ trans('texts.petinfo') }}"></textarea></p>
+				    <p><div id="map" class="smallmap"></div></p>
+                                    <p><button id="locate">Locate me!</button></p>
+					<p>
+                                    <input type="checkbox" name="track" id="track"><label for="track">Track me</label>
+					</p>
 						
 					<p><span class="btn btn-large btn-block fileinput-button">
 					    <i class="icon-picture"></i>
