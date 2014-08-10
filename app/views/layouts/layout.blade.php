@@ -28,7 +28,8 @@
     	  var js, fjs = d.getElementsByTagName(s)[0];
     	  if (d.getElementById(id)) return;
     	  js = d.createElement(s); js.id = id;
-    	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=259410807538564";
+    	  // js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=259410807538564";
+    	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=269710886550943";
     	  fjs.parentNode.insertBefore(js, fjs);
     	}(document, 'script', 'facebook-jssdk'));</script>
         <!--[if lt IE 7]>
@@ -50,7 +51,7 @@
 
 			      		<a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ Request::path() }}" data-text="Missing pet poster/flyer maker" data-via="findbackpets" data-count="none" data-hashtags="missingpet" data-dnt="true">Tweet</a>
 						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-						<div class="fb-like" data-href="{{ Request::path() }}" data-send="false" data-width="300" data-show-faces="false" data-font="arial"></div>
+						<div class="fb-like" data-href="{{ 'uploads/' . Session::get('hash') . '/poster.jpg' }}" data-send="false" data-width="300" data-show-faces="false" data-font="arial"></div>
 					</div>
 			        <p>Forked from <a href="http://twitter.com/msurguy" target="_blank">@msurguy</a> by <a href="http://bitless.be" target="_blank">BitLess</a>.  <i class="icon-attention"></i> {{ trans('texts.privacynote') }}</p>
 			      </div>
@@ -65,16 +66,22 @@
 
         <script src="{{ url('js/main.js')}}"></script>
         @yield('scripts')
-        <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-          ga('create', 'UA-41200330-1', 'missingpetflyer.com');
-          ga('send', 'pageview');
-
-        </script>
-
+	<!-- Piwik -->
+	<script type="text/javascript">
+  		var _paq = _paq || [];
+  		_paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+  		_paq.push(["setDomains", ["*.www.animalperdu.eu","*.animalperdu.eu","*.huisdierkwijt.eu","*.petlost.eu","*.www.huisdierkwijt.eu","*.www.petlost.eu"]]);
+  		_paq.push(["trackPageView"]);
+  		_paq.push(["enableLinkTracking"]);
+		
+  		(function() {
+    		var u=(("https:" == document.location.protocol) ? "https" : "http") + "://byte-consult.be/piwik/";
+    		_paq.push(["setTrackerUrl", u+"piwik.php"]);
+    		_paq.push(["setSiteId", "10"]);
+    		var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+    		g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+  		})();
+	</script>
+<!-- End Piwik Code -->
     </body>
 </html>

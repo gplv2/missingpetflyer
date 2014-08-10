@@ -122,7 +122,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
-		'Dinesh\Barcode\BarcodeServiceProvider'
+		// 'Dinesh\Barcode\BarcodeServiceProvider'
 	),
 
 	/*
@@ -190,8 +190,8 @@ return array(
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
 		'Image'             => 'Intervention\Image\Facades\Image',
-      'DNS1D'             => 'Dinesh\Barcode\Facades\DNS1DFacade',
-		'DNS2D'             => 'Dinesh\Barcode\Facades\DNS2DFacade'
+      		//'DNS1D'             => 'Dinesh\Barcode\Facades\DNS1DFacade',
+		//'DNS2D'             => 'Dinesh\Barcode\Facades\DNS2DFacade'
 	),
 
 );

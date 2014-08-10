@@ -1,5 +1,6 @@
 @section('styles')
 <link rel="stylesheet" href="{{url('css/jquery.Jcrop.min.css')}}" type="text/css" />
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css" />
 
 <style type="text/css">
 html, body {
@@ -141,7 +142,8 @@ html, body {
 
 @section('scripts')
 <script src="{{ url('js/vendor/spin.min.js')}}"></script>
-<script src="{{ url('js/vendor/jquery.ui.widget.js')}}"></script>
+<!-- <script src="{{ url('js/vendor/jquery.ui.widget.js')}}"></script>-->
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
 <script src="{{ url('js/vendor/jquery.iframe-transport.js')}}"></script>
 <script src="{{ url('js/vendor/jquery.fileupload.js')}}"></script>
 <script src="{{ url('js/vendor/jquery.fileupload-process.js')}}"></script>
@@ -225,7 +227,7 @@ jQuery(function(){
             };
         },
         fail: function(){
-        	alert('Error uploading an image');
+        	// alert('Error uploading an image');
         },
         always: function(e,data){
         	$('#progress').hide();
@@ -268,12 +270,12 @@ jQuery(function(){
 
     $('#lostpetform').submit(function() {
     	ImageSpinner.spin(document.getElementById('previewSpinner'));
-      $.post("{{url('form')}}", $("#lostpetform").serialize())
-          .done(function(data) { $('#previewContainer').attr('src',data.image); $('#downloadBtn').fadeIn(400);
- })
-          .fail(function() { alert("error"); })
-          .always(function() { ImageSpinner.stop();});
-      return false;
+        $.post("{{url('form')}}", $("#lostpetform").serialize()).done(function(data) { 
+		$('#previewContainer').attr('src',data.image); $('#downloadBtn').fadeIn(400);
+ 	}).fail(function() { alert("error"); }).always(function() { 
+		ImageSpinner.stop();
+	});
+      	return false;
     });
 });
 </script>
@@ -299,8 +301,14 @@ jQuery(function(){
 				    <p><input type="text" name="name" class="span4" placeholder="{{ trans('texts.petname') }}"></p>
 				    <p><input type="text" name="breed" class="span4" placeholder="{{ trans('texts.petbreed') }}"></p>
 				    <p><input type="text" name="color" class="span4" placeholder="{{ trans('texts.petcolor') }}"></p>
-				    <p><input type="text" name="gender" class="span4" placeholder="{{ trans('texts.petgender') }}"></p>
-				    <p><input type="text" name="date" class="span4" placeholder="{{ trans('texts.petlost') }}"></p>
+			            <p>
+                                    <div id="radio">
+  				       <input type="radio" class="span4" name="gender" id="male" checked><label for="male">{{ trans('texts.male') }}</label>
+           			       <input type="radio" class="span4" name="gender" id="female" ><label for="female">{{ trans('texts.female') }}</label>
+			            </div>
+			            </p>
+				    <p><input type="text" id='date' name="date" class="span4" placeholder="{{ trans('texts.petlost') }}"></p>
+				    <p><input type="text" name="email" class="span4" placeholder="{{ trans('texts.email') }}"></p>
 				    <p><textarea name="contact" class="span4" placeholder="{{ trans('texts.petinfo') }}"></textarea></p>
 						
 					<p><span class="btn btn-large btn-block fileinput-button">
@@ -338,6 +346,7 @@ jQuery(function(){
 					<li>{{ trans('texts.gasstations') }}</li>
 					<li>{{ trans('texts.drugstores') }}</li>
 					<li>{{ trans('texts.schools') }}</li>
+					<li>{{ trans('texts.aroundlastplace') }}</li>
 				</ul>
 			</div>
 			<div class="well text-center"  id="imageContainer">

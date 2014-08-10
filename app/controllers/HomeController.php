@@ -103,8 +103,70 @@ class HomeController extends BaseController {
 		
 		$img->insert($avatar, ($imgwidth/2)-($avatar->width/2), 170);
 
+		//File::put($destinationPath.'/qr.png', DNS2D::getBarcodePNG('This is a test', "QRCODE",3,33));
+		// DNS2D::getBarcodePNG($destinationPath.'/qr.png', "QRCODE",3,33);
+		// $qr = Image::raw(DNS2D::getBarcodePNG("4", "PDF417"));
+		//$img->insert($destinationPath.'/qr.png', ($imgwidth/4)-($avatar->width/4), 170);
+		//$im = Image::open($destinationPath.'/qr.png')->response('jpg');
+		//$img->insert($im, ($imgwidth/4)-($avatar->width/4), 170);
+
+		// here our data 
+		$name         = $petName;
+		$sortName     = $petName;
+		$phone        = '0498889351'; 
+		$phonePrivate = ''; 
+		$phoneCell    = $contactInfo; 
+		$orgName      = ''; 
+
+		$email        = 'john.doe@example.com'; 
+
+		// if not used - leave blank! 
+		$addressLabel     = ''; 
+		$addressPobox     = ''; 
+		$addressExt       = ''; 
+		$addressStreet    = ''; 
+		$addressTown      = ''; 
+		$addressRegion    = ''; 
+		$addressPostCode  = ''; 
+		$addressCountry   = ''; 
+
+		// we building raw data 
+		$codeContents  = 'BEGIN:VCARD'."\n"; 
+		$codeContents .= 'VERSION:2.1'."\n"; 
+		$codeContents .= 'N:'.$sortName."\n"; 
+		$codeContents .= 'FN:'.$name."\n"; 
+		$codeContents .= 'ORG:'.$orgName."\n"; 
+		$codeContents .= 'URL:'.$destinationPath.'/poster.jpg'."\n"; 
+
+		$codeContents .= 'TEL;WORK;VOICE:'.$phone."\n"; 
+		$codeContents .= 'TEL;HOME;VOICE:'.$phonePrivate."\n"; 
+		$codeContents .= 'TEL;TYPE=cell:'.$phoneCell."\n"; 
+
+		$codeContents .= 'ADR;TYPE=private;'. 
+			'LABEL="'.$addressLabel.'":' 
+			.$addressPobox.';' 
+			.$addressExt.';' 
+			.$addressStreet.';' 
+			.$addressTown.';' 
+			.$addressPostCode.';' 
+			.$addressCountry 
+			."\n"; 
+
+		$codeContents .= 'EMAIL:'.$email."\n"; 
+
+		$codeContents .= 'END:VCARD'; 
+
+		// generating 
+		\PHPQRCode\QRcode::png($codeContents, $destinationPath.'/qr.png', 'L', 3); 
+
+		//\PHPQRCode\QRcode::png($destinationPath.'/poster.jpg', $destinationPath.'/qr.png', 'L', 4, 2);
+		$img->insert($destinationPath.'/qr.png', ($imgwidth/2)-($avatar->width/2), 170);
+
 		$img->save($destinationPath.'/poster.jpg');
-		return Response::json(array('image'=>url($destinationPath.'/poster.jpg?'.time())), 200);
+		return Response::json(array(
+			'image'=>url($destinationPath.'/poster.jpg?'.time()),
+			'qr'=>url($destinationPath.'/qr.png')
+			), 200);
 	}
 
 	// process image upload

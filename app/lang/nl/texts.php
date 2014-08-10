@@ -30,5 +30,8 @@ return array(
 	"uploadpicture" => "Laad een foto van het dier",
 	"downloadposter" => "Download poster",
 	"previewprint" => "Preview en print de poster",
-	"privacynote" => "Sommige data wordt bewaard om kaart en api services te leveren.",
+	"privacynote" => "Bepaalde data wordt bewaard om api services te kunnen aanleveren.",
+	"male" => "Mannelijk",
+	"female" => "Vrouwelijk",
+	"email" => "E-mail adres",
 );

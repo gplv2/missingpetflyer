@@ -31,4 +31,7 @@ return array(
 	"downloadposter" => "Download poster",
 	"previewprint" => "Preview and print the poster",
 	"privacynote" => "Some data is stored to provide the api and mapping services",
+	"male" => "Male",
+	"female" => "Female",
+	"email" => "Email adress",
 );
