@@ -2,7 +2,7 @@
 
 ### Features
 
-This is the source of http://lostpet.eu.  A fork/extension to the original of http://missingpetflyer.com
+This is the source of http://petlost.eu.  A fork/extension to the original of http://missingpetflyer.com
 
 This application allows the users to upload a picture of a missing pet and create a poster of missing pet with custom text, without using MS Word or other poster making tools. 
 It works on mobile - iOS 6 and Android devices and allows cropping of images by selecting the area of the image before previewing the poster.
