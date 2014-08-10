@@ -63,6 +63,7 @@ class HomeController extends BaseController {
 		$petGender 		= Input::get('gender','gender');
 		$petDate 		= Input::get('date','date');
 		$contactInfo 	= Input::get('contact','contact');
+		$email 	= Input::get('email','email');
 		
 		// determine size of the text strings
 		$headerArSize = imagettfbbox(72, 0, 'font/OpenSans-Semibold.ttf', $headerText);
@@ -92,7 +93,11 @@ class HomeController extends BaseController {
 		$img->text($petDate, ($imgwidth/2)-($petDateWidth/2), 1280, 50, '#333333', null, 'font/OpenSans-Semibold.ttf');
 		
 		// write contact info
-		$img->text($contactInfo, 200, 1370, 32, '#333333', null, 'font/OpenSans-Semibold.ttf');
+                if(!empty($email)) {
+			$img->text($contactInfo . " / " . $email, 200, 1370, 32, '#333333', null, 'font/OpenSans-Semibold.ttf');
+		} else  {
+		$img->text($contactInfo , 200, 1370, 32, '#333333', null, 'font/OpenSans-Semibold.ttf');
+		}
 
 		// assign avatar of the pet
 		if (File::exists($fullpath)){
@@ -118,8 +123,6 @@ class HomeController extends BaseController {
 		$phoneCell    = $contactInfo; 
 		$orgName      = ''; 
 
-		$email        = 'john.doe@example.com'; 
-
 		// if not used - leave blank! 
 		$addressLabel     = ''; 
 		$addressPobox     = ''; 
@@ -136,7 +139,7 @@ class HomeController extends BaseController {
 		$codeContents .= 'N:'.$sortName."\n"; 
 		$codeContents .= 'FN:'.$name."\n"; 
 		$codeContents .= 'ORG:'.$orgName."\n"; 
-		$codeContents .= 'URL:'.$destinationPath.'/poster.jpg'."\n"; 
+		$codeContents .= 'URL:'.url($destinationPath.'/poster.jpg')."\n"; 
 
 		$codeContents .= 'TEL;WORK;VOICE:'.$phone."\n"; 
 		$codeContents .= 'TEL;HOME;VOICE:'.$phonePrivate."\n"; 
