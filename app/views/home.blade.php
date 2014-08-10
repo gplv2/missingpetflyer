@@ -4,6 +4,8 @@
 <link rel="stylesheet" href="{{url('js/jquery-ui/jquery-ui.min.css')}}" />
 <link rel="stylesheet" href="{{url('js/OpenLayers/theme/default/style.css')}}" type="text/css" />
 <link rel="stylesheet" href="{{url('css/geostyle.css')}}" type="text/css" />
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.3.6/slick.css"/>
+
 
 <style type="text/css">
 html, body {
@@ -154,6 +156,7 @@ html, body {
 <script src="{{ url('js/vendor/jquery.fileupload-process.js')}}"></script>
 <script src="{{ url('js/vendor/jquery.fileupload-validate.js')}}"></script>
 <script src="{{ url('js/vendor/jquery.Jcrop.min.js')}}"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.3.6/slick.min.js"/></script>
 
 <script type="text/javascript">
 jQuery(function(){
@@ -362,6 +365,15 @@ jQuery(function(){
 			</div>
 			<div class="well text-center"  id="imageContainer">
 				<p><img id="previewContainer" src="img/dog-poster.jpg"></p>
+				<div class="slider autoplay">
+			           <div><div class="image"><img data-lazy="uploads/nPVUw7Ad/poster.jpg"/></div></div>
+			           <div><div class="image"><img data-lazy="uploads/RdOYY5i8/poster.jpg"/></div></div>
+			           <div><div class="image"><img data-lazy="uploads/Mh21Vmjd/poster.jpg"/></div></div>
+			           <div><div class="image"><img data-lazy="uploads/vH77QgNa/poster.jpg"/></div></div>
+			           <div><div class="image"><img data-lazy="uploads/xGhWDXxO/poster.jpg"/></div></div>
+			           <div><div class="image"><img data-lazy="uploads/tkcE7ACm/poster.jpg"/></div></div>
+			           <div><div class="image"><img data-lazy="uploads/YMH97lWO/poster.jpg"/></div></div>
+				</div>
 				<p><a href="{{url('download')}}" target="_blank" id="downloadBtn" class="btn btn-block"><i class="icon-download"></i> {{ trans('texts.downloadposter') }}</a></p>
 			</div>
 			

@@ -49,7 +49,7 @@
 			      <div class="span12">
 			      	<div class="pull-right">
 
-			      		<a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ Request::path() }}" data-text="Missing pet poster/flyer maker" data-via="findbackpets" data-count="none" data-hashtags="missingpet" data-dnt="true">Tweet</a>
+			      		<a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ 'uploads/' . Session::get('hash') . '/poster.jpg' }}" data-text="Missing pet poster/flyer maker" data-via="findbackpets" data-count="none" data-hashtags="missingpet" data-dnt="true">Tweet</a>
 						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 						<div class="fb-like" data-href="{{ 'uploads/' . Session::get('hash') . '/poster.jpg' }}" data-send="false" data-width="300" data-show-faces="false" data-font="arial"></div>
 					</div>

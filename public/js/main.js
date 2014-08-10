@@ -26,4 +26,10 @@ $(document).ready(function () {
    // $( "input[type=submit], a, button" ).button().click(function( event ) { event.preventDefault(); });
    $( '#locate' ).button().click(function( event ) { event.preventDefault(); });
 
+   $('.autoplay').slick({
+	slidesToShow: 1,
+	slidesToScroll: 1,
+	autoplay: true,
+	autoplaySpeed: 4000,
+   });
 });
