@@ -315,10 +315,11 @@ jQuery(function(){
 				    <p><input type="text" id='date' name="date" class="span4" placeholder="{{ trans('texts.petlost') }}"></p>
 				    <p><input type="text" name="email" class="span4" placeholder="{{ trans('texts.email') }}"></p>
 				    <p><textarea name="contact" class="span4" placeholder="{{ trans('texts.petinfo') }}"></textarea></p>
+				    <h3>{{ trans('texts.whereseenlasttime') }}</h3>
 				    <p><div id="map" class="smallmap"></div></p>
-                                    <p><button id="locate">Locate me!</button></p>
+                                    <p><button id="locate">{{ trans('texts.locateme') }}</button></p>
 					<p>
-                                    <input type="checkbox" name="track" id="track"><label for="track">Track me</label>
+                                    <input type="checkbox" name="track" id="track"><label for="track">{{ trans('texts.trackme') }}</label>
 					</p>
 						
 					<p><span class="btn btn-large btn-block fileinput-button">

@@ -6,10 +6,10 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Missing pet flyer generator</title>
+        <title>{{ trans('texts.title') }}</title>
         <title></title>
-        <meta name="author" content="Maks Surguy">
-        <meta name="description" content="Print out a poster for your lost pet, missing dog or cat template poster">
+        <meta name="author" content="{{ trans('texts.author') }}">
+        <meta name="description" content="{{ trans('texts.contentdescription') }}">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="{{ url('css/petflyer.css')}}">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,700' rel='stylesheet' type='text/css'>

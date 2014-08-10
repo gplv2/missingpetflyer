@@ -34,4 +34,9 @@ return array(
 	"male" => "Mannelijk",
 	"female" => "Vrouwelijk",
 	"email" => "E-mail adres",
+	"whereseenlasttime" => "Waar ben je het dier verloren?",
+	"locateme" => "Bepaal uw locatie",
+	"trackme" => "Volgen",
+	"contentdescription" => "Adverteer je verloren dier op een live kaart.  Met api services voor plugin ondersteuning. Print de poster uit en ontvangt waarschuwingen wanneer iemand uw dier ziet.",
+	"author" => "Glenn Plas",
 );
