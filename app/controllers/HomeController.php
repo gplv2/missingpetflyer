@@ -78,8 +78,14 @@ class HomeController extends BaseController {
 		$petColorArSize = imagettfbbox(50, 0, 'font/OpenSans-Semibold.ttf', $petColor);
 		$petColorWidth = abs($petColorArSize[2] - $petColorArSize[0]);
 
-		$petGenderArSize = imagettfbbox(50, 0, 'font/OpenSans-Semibold.ttf', $petGender);
-		$petGenderWidth = abs($petGenderArSize[2] - $petGenderArSize[0]);
+		// $petGenderArSize = imagettfbbox(50, 0, 'font/OpenSans-Semibold.ttf', $petGender);
+		// $petGenderWidth = abs($petGenderArSize[2] - $petGenderArSize[0]);
+
+        if($petGender == 'male') {
+	        $img->insert(sprintf('img/male.png',$petGender), 50, 50 );
+        } elseif($petGender == 'female') {
+	        $img->insert(sprintf('img/female.png',$petGender), 50, 50 );
+		}
 
 		$petDateArSize = imagettfbbox(50, 0, 'font/OpenSans-Semibold.ttf', $petDate);
 		$petDateWidth = abs($petDateArSize[2] - $petDateArSize[0]);
@@ -89,14 +95,14 @@ class HomeController extends BaseController {
 		$img->text($petName, ($imgwidth/2)-($petNameWidth/2), 930, 50, '#333333', null, 'font/OpenSans-Semibold.ttf');
 		$img->text($petBreed,  ($imgwidth/2)-($petBreedWidth/2), 1020, 50, '#333333', null, 'font/OpenSans-Semibold.ttf');
 		$img->text($petColor, ($imgwidth/2)-($petColorWidth/2), 1110, 50, '#333333', null, 'font/OpenSans-Semibold.ttf');
-		$img->text($petGender, ($imgwidth/2)-($petGenderWidth/2), 1200, 50, '#333333', null, 'font/OpenSans-Semibold.ttf');
-		$img->text($petDate, ($imgwidth/2)-($petDateWidth/2), 1280, 50, '#333333', null, 'font/OpenSans-Semibold.ttf');
+		// $img->text($petGender, ($imgwidth/2)-($petGenderWidth/2), 1200, 50, '#333333', null, 'font/OpenSans-Semibold.ttf');
+		$img->text($petDate, ($imgwidth/2)-($petDateWidth/2), 1200, 50, '#333333', null, 'font/OpenSans-Semibold.ttf');
 		
 		// write contact info
-                if(!empty($email)) {
-			$img->text($contactInfo . " / " . $email, 200, 1370, 32, '#333333', null, 'font/OpenSans-Semibold.ttf');
+        if(!empty($email)) {
+			$img->text($contactInfo . " / " . $email, 200, 1290, 32, '#333333', null, 'font/OpenSans-Semibold.ttf');
 		} else  {
-		$img->text($contactInfo , 200, 1370, 32, '#333333', null, 'font/OpenSans-Semibold.ttf');
+		    $img->text($contactInfo , 200, 1290, 32, '#333333', null, 'font/OpenSans-Semibold.ttf');
 		}
 
 		// assign avatar of the pet
@@ -106,7 +112,7 @@ class HomeController extends BaseController {
 			$avatar = Image::make('img/dogsketch.jpg');
 		}
 		
-		$img->insert($avatar, ($imgwidth/2)-($avatar->width/2), 140);
+		$img->insert($avatar, ($imgwidth/2)-($avatar->width/2), 190);
 
 		//File::put($destinationPath.'/qr.png', DNS2D::getBarcodePNG('This is a test', "QRCODE",3,33));
 		// DNS2D::getBarcodePNG($destinationPath.'/qr.png', "QRCODE",3,33);
@@ -165,7 +171,8 @@ class HomeController extends BaseController {
 		\PHPQRCode\QRcode::png($codeContents, $destinationPath.'/qr.png', 'L', 3); 
 
 		//\PHPQRCode\QRcode::png($destinationPath.'/poster.jpg', $destinationPath.'/qr.png', 'L', 4, 2);
-		$img->insert($destinationPath.'/qr.png', ($imgwidth/2)-($avatar->width/2), 170);
+		//$img->insert($destinationPath.'/qr.png', ($imgwidth/2)-($avatar->width/2+200), 770);
+		$img->insert($destinationPath.'/qr.png', $imgwidth - 210, $imgheight-($avatar->height/3));
 
 		$img->save($destinationPath.'/poster.jpg');
 		return Response::json(array(

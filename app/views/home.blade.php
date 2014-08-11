@@ -311,8 +311,8 @@ jQuery(function(){
 				    <p><input type="text" name="color" class="span4" placeholder="{{ trans('texts.petcolor') }}"></p>
 			            <p>
                                     <div id="radio">
-  				       <input type="radio" class="span4" name="gender" id="male" value="{{ trans('texts.male') }}" ><label for="male">{{ trans('texts.male') }}</label>
-           			       <input type="radio" class="span4" name="gender" id="female" value="{{ trans('texts.female') }}"  ><label for="female">{{ trans('texts.female') }}</label>
+  				       <input type="radio" class="span4" name="gender" id="male" value="male" ><label for="male">{{ trans('texts.male') }}</label>
+           			       <input type="radio" class="span4" name="gender" id="female" value="female"  ><label for="female">{{ trans('texts.female') }}</label>
 			            </div>
 			            </p>
 				    <p><input type="text" id='date' name="date" class="span4" placeholder="{{ trans('texts.petlost') }}"></p>
