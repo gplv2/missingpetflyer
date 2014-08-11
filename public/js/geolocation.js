@@ -61,8 +61,7 @@ geolocate.events.register("locationupdated",geolocate,function(e) {
         style
     );
 */
-    vector.addFeatures([
-        new OpenLayers.Feature.Vector(
+    var feature = new OpenLayers.Feature.Vector(
             e.point,
             {},
             {
@@ -72,22 +71,24 @@ geolocate.events.register("locationupdated",geolocate,function(e) {
                 fillOpacity: 0,
                 pointRadius: 10
             }
-        )
-    ]);
+    );
+
+    vector.addFeatures([ feature ]);
+
     if (firstGeolocation) {
         map.zoomToExtent(vector.getDataExtent());
         firstGeolocation = false;
         this.bind = true;
     }
-    var bounds = vector.geometry.getBounds();
+    var bounds = feature.geometry.getBounds();
     var latlon = bounds.transform( map.getProjectionObject(), new OpenLayers.Projection("EPSG:4326"));
-   console.log(latlon);
+    // console.log(latlon);
     $('#idtaglat').val(latlon.bottom);
     $('#idtaglon').val(latlon.left);
 });
 geolocate.events.register("locationfailed",this,function() {
     // OpenLayers.Console.log('Location detection failed');
-    console.log(this);
+    // console.log(this);
 });
 /*
    $("#clearmap").click( function() {
