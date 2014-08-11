@@ -118,10 +118,9 @@ class HomeController extends BaseController {
 		// here our data 
 		$name         = $petName;
 		$sortName     = $petName;
-		$phone        = '0498889351'; 
-		$phonePrivate = ''; 
+		$phone        = '+32(0)498889351'; 
 		$phoneCell    = $contactInfo; 
-		$orgName      = ''; 
+		$orgName      = 'PetLost'; 
 
 		// if not used - leave blank! 
 		$addressLabel     = ''; 
@@ -134,18 +133,20 @@ class HomeController extends BaseController {
 		$addressCountry   = ''; 
 
 		// we building raw data  see https://github.com/zxing/zxing/wiki/Barcode-Contents & http://www.freeformatter.com/qr-code-generator.html
-		$codeContents  = sprintf("geo:%s,%s,0\n", Input::get('idtaglat'), Input::get('idtaglon'));
-		// the vcard
-/*
+
+		// the vcard ( version 4 seems to be a bit too bleeding edge for android apps I've tried.  Not all recognise GEO and TEL fields (certainly not PHOTO)
 		$codeContents  = 'BEGIN:VCARD'."\n"; 
-		$codeContents .= 'VERSION:2.1'."\n"; 
-		$codeContents .= 'N:'.$sortName."\n"; 
+		$codeContents .= 'VERSION:4.0'."\n"; 
+		$codeContents .= 'N:'.$name."\n"; 
 		$codeContents .= 'FN:'.$name."\n"; 
 		$codeContents .= 'ORG:'.$orgName."\n"; 
-		$codeContents .= 'URL:'.url($destinationPath.'/poster.jpg')."\n"; 
-		$codeContents .= 'TEL;HOME;VOICE:'.$phone."\n"; 
-		$codeContents .= 'TEL;TYPE=cell:'.$phoneCell."\n"; 
+		$codeContents .= 'PHOTO;MEDIATYPE=image/jpeg:' . url($destinationPath.'/poster.jpg') ."\n";
+		// $codeContents .= 'URL:'.url($destinationPath.'/poster.jpg')."\n"; 
+		$codeContents .= 'TEL;TYPE=cell:'.$phone."\n"; 
+		$codeContents .= 'TEL;TYPE=home,voice;VALUE=uri:tel:'.$phone."\n"; 
+		$codeContents .= sprintf("GEO:geo:%s,%s\n", Input::get('idtaglat'), Input::get('idtaglon'));
 
+/*
 		$codeContents .= 'ADR;TYPE=private;'. 
 			'LABEL="'.$addressLabel.'":' 
 			.$addressPobox.';' 
@@ -155,11 +156,10 @@ class HomeController extends BaseController {
 			.$addressPostCode.';' 
 			.$addressCountry 
 			."\n"; 
-
+*/
 		$codeContents .= 'EMAIL:'.$email."\n"; 
 
 		$codeContents .= 'END:VCARD'; 
-*/
 
 		// generating 
 		\PHPQRCode\QRcode::png($codeContents, $destinationPath.'/qr.png', 'L', 3); 
