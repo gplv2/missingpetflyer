@@ -147,7 +147,7 @@ html, body {
 
 @section('scripts')
 <script src="{{ url('js/vendor/spin.min.js')}}"></script>
-<script src="{{ url('js/OpenLayers/OpenLayers.mobile.js')}}"></script>
+<script src="{{ url('js/OpenLayers/OpenLayers.js')}}"></script>
 <script src="{{ url('js/geolocation.js')}}"></script>
 <!-- <script src="{{ url('js/vendor/jquery.ui.widget.js')}}"></script>-->
 <script src="{{ url('js/jquery-ui/jquery-ui.js')}}"></script>
@@ -344,6 +344,9 @@ jQuery(function(){
 					<input type="hidden" id="w" name="w" />
 					<input type="hidden" id="h" name="h" />
 
+					<input type="hidden" id="idtaglat" name="idtaglat" />
+					<input type="hidden" id="idtaglon" name="idtaglon" />
+
 					<br>
 				    <p><button type="submit" class="btn btn-large"><i class="icon-eye"></i> {{ trans('texts.previewprint') }}</button></p>
 				  </fieldset>
@@ -365,6 +368,12 @@ jQuery(function(){
 			</div>
 			<div class="well text-center"  id="imageContainer">
 				<p><img id="previewContainer" src="img/dog-poster.jpg"></p>
+				<p><a href="{{url('download')}}" target="_blank" id="downloadBtn" class="btn btn-block"><i class="icon-download"></i> {{ trans('texts.downloadposter') }}</a></p>
+			</div>
+		</div>
+{{--
+		<div class="span6">
+			<div class="well">
 				<div class="slider autoplay">
 			           <div><div class="image"><img data-lazy="uploads/nPVUw7Ad/poster.jpg"/></div></div>
 			           <div><div class="image"><img data-lazy="uploads/RdOYY5i8/poster.jpg"/></div></div>
@@ -374,10 +383,9 @@ jQuery(function(){
 			           <div><div class="image"><img data-lazy="uploads/tkcE7ACm/poster.jpg"/></div></div>
 			           <div><div class="image"><img data-lazy="uploads/YMH97lWO/poster.jpg"/></div></div>
 				</div>
-				<p><a href="{{url('download')}}" target="_blank" id="downloadBtn" class="btn btn-block"><i class="icon-download"></i> {{ trans('texts.downloadposter') }}</a></p>
 			</div>
-			
 		</div
+--}}
 	</div>
 	
 @stop

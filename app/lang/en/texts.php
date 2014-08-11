@@ -12,8 +12,9 @@ return array(
 	"tips" => "Where to hang your posters",
 	"busystreets" => "High-traffic streets (preferably pedestrians/bikers)",
 	"libraries" => "Libraries",
-	"coffeshops" => "Coffee Shops / Bars",
+	"coffeeshops" => "Coffee Shops / Bars",
 	"gasstations" => "Gas Stations",
+	"drugstores" => "Drug Stores",
 	"drugstores" => "Drug Stores",
 	"schools" => "Schools",
 	"title" => "Missing pet - map + poster tool",
@@ -39,4 +40,5 @@ return array(
 	"trackme" => "Track me",
 	"contentdescription" => "Announce your lost animal on a live map, Print out a poster to hang up for your lost pet. Get notified when it gets spotted",
 	"author" => "Glenn Plas",
+	"aroundlastplace" => "Around the location where you lost it.",
 );

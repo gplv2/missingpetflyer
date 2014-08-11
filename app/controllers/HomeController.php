@@ -106,7 +106,7 @@ class HomeController extends BaseController {
 			$avatar = Image::make('img/dogsketch.jpg');
 		}
 		
-		$img->insert($avatar, ($imgwidth/2)-($avatar->width/2), 170);
+		$img->insert($avatar, ($imgwidth/2)-($avatar->width/2), 140);
 
 		//File::put($destinationPath.'/qr.png', DNS2D::getBarcodePNG('This is a test', "QRCODE",3,33));
 		// DNS2D::getBarcodePNG($destinationPath.'/qr.png', "QRCODE",3,33);
@@ -133,16 +133,17 @@ class HomeController extends BaseController {
 		$addressPostCode  = ''; 
 		$addressCountry   = ''; 
 
-		// we building raw data 
+		// we building raw data  see https://github.com/zxing/zxing/wiki/Barcode-Contents & http://www.freeformatter.com/qr-code-generator.html
+		$codeContents  = sprintf("geo:%s,%s,0\n", Input::get('idtaglat'), Input::get('idtaglon'));
+		// the vcard
+/*
 		$codeContents  = 'BEGIN:VCARD'."\n"; 
 		$codeContents .= 'VERSION:2.1'."\n"; 
 		$codeContents .= 'N:'.$sortName."\n"; 
 		$codeContents .= 'FN:'.$name."\n"; 
 		$codeContents .= 'ORG:'.$orgName."\n"; 
 		$codeContents .= 'URL:'.url($destinationPath.'/poster.jpg')."\n"; 
-
-		$codeContents .= 'TEL;WORK;VOICE:'.$phone."\n"; 
-		$codeContents .= 'TEL;HOME;VOICE:'.$phonePrivate."\n"; 
+		$codeContents .= 'TEL;HOME;VOICE:'.$phone."\n"; 
 		$codeContents .= 'TEL;TYPE=cell:'.$phoneCell."\n"; 
 
 		$codeContents .= 'ADR;TYPE=private;'. 
@@ -158,6 +159,7 @@ class HomeController extends BaseController {
 		$codeContents .= 'EMAIL:'.$email."\n"; 
 
 		$codeContents .= 'END:VCARD'; 
+*/
 
 		// generating 
 		\PHPQRCode\QRcode::png($codeContents, $destinationPath.'/qr.png', 'L', 3); 

@@ -12,7 +12,7 @@ return array(
 	"tips" => "Waar best je posters verspreiden",
 	"busystreets" => "Drukke straten (vooral voetgangers/fieters)",
 	"libraries" => "Bibliotheken/Kleinhandel",
-	"coffeshops" => "Taverne/Cafe's",
+	"coffeeshops" => "Taverne/Cafe's",
 	"gasstations" => "Tankstations, krantenwinkels",
 	"drugstores" => "Apothekers",
 	"schools" => "Scholen",
@@ -39,4 +39,5 @@ return array(
 	"trackme" => "Volgen",
 	"contentdescription" => "Adverteer je verloren dier op een live kaart.  Met api services voor plugin ondersteuning. Print de poster uit en ontvangt waarschuwingen wanneer iemand uw dier ziet.",
 	"author" => "Glenn Plas",
+	"aroundlastplace" => "In de buurt van de plaats waar je het laatst hebt gezien",
 );
