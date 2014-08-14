@@ -81,12 +81,6 @@ class HomeController extends BaseController {
         // $petGenderArSize = imagettfbbox(50, 0, 'font/OpenSans-Semibold.ttf', $petGender);
         // $petGenderWidth = abs($petGenderArSize[2] - $petGenderArSize[0]);
 
-        if($petGender == 'male') {
-            $img->insert(sprintf('img/male.png',$petGender), 50, 50 );
-        } elseif($petGender == 'female') {
-            $img->insert(sprintf('img/female.png',$petGender), 50, 50 );
-        }
-
         $petDateArSize = imagettfbbox(50, 0, 'font/OpenSans-Semibold.ttf', $petDate);
         $petDateWidth = abs($petDateArSize[2] - $petDateArSize[0]);
 
@@ -113,6 +107,13 @@ class HomeController extends BaseController {
         }
         
         $img->insert($avatar, ($imgwidth/2)-($avatar->width/2), 190);
+
+        if($petGender == 'male') {
+            $img->insert(sprintf('img/male.png',$petGender), 50, 50 );
+        } elseif($petGender == 'female') {
+            $img->insert(sprintf('img/female.png',$petGender), 50, 50 );
+        }
+
 
         //File::put($destinationPath.'/qr.png', DNS2D::getBarcodePNG('This is a test', "QRCODE",3,33));
         // DNS2D::getBarcodePNG($destinationPath.'/qr.png', "QRCODE",3,33);
@@ -186,6 +187,10 @@ class HomeController extends BaseController {
     public function postUpload()
     {
 
+        // define size of the poster
+        $imgwidth = 1224;
+        $imgheight = 1584;
+
         $file = Input::file('file');
          
         if(!Session::has('hash')){
@@ -204,7 +209,7 @@ class HomeController extends BaseController {
         $upload_success = Input::file('file')->move($destinationPath, $filename);
          
         if( $upload_success ) {
-            Image::open($destinationPath.'/'.$filename)->resize(null, 600, true)->save($destinationPath.'/'.$filename);
+            Image::open($destinationPath.'/'.$filename)->resize($imgwidth-50, null , true)->save($destinationPath.'/'.$filename);
             return Response::json(array('files'=>array('name'=>url($destinationPath.'/'.$filename.'?'.time()))), 200);
         } else {
            return Response::json('error', 400);

@@ -10,6 +10,26 @@
     height: 256px;
     border: 1px solid #ccc;
 }
+
+.olControlAttribution {
+   bottom: 3px;
+   left: 10px;
+   line-height: 9px;
+   font-size: 9px;
+   color: #ccc;
+}
+
+.map {
+   width: 750px;
+   height: 356px;
+   background-color: #eee;
+   border: 1px solid #ccc;
+}
+
+img.olTileImage {
+   max-width: none;
+}
+
 #tags {
     display: none;
 }

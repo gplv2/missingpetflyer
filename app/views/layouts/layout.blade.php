@@ -11,15 +11,19 @@
         <meta name="author" content="{{ trans('texts.author') }}">
         <meta name="description" content="{{ trans('texts.contentdescription') }}">
         <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" href="{{ url('css/petflyer.css')}}">
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,700' rel='stylesheet' type='text/css'>
 
-        <link rel="stylesheet" href="{{ url('bootstrap/bootstrap-2.3.1.css?v=0.2')}}">
-        <link rel="stylesheet" href="{{ url('bootstrap/bootstrap-responsive-2.3.1.min.css')}}">
-        <link rel="stylesheet" href="{{ url('css/main.css')}}">
+        <!-- CSS are placed here -->
+        {{ HTML::style('css/petflyer.css')}}
+        {{ HTML::style('http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,700')}}
+        {{ HTML::style('js/OpenLayers/theme/default/style.css')}}
+        {{ HTML::style('css/main.css')}}
+        {{ HTML::style('bootstrap/bootstrap-2.3.1.css') }}
+        {{ HTML::style('css/bootstrap-theme.min.css') }}
+        {{ HTML::style('bootstrap/bootstrap-responsive-2.3.1.min.css') }}
+
         @yield('styles')
         <!--[if lt IE 9]>
-            <script src="{{ url('js/vendor/html5-3.6-respond-1.1.0.min.js')}}"></script>
+            {{ HTML::script('js/vendor/html5-3.6-respond-1.1.0.min.js')}}
         <![endif]-->
     </head>
     <body>
@@ -36,8 +40,7 @@
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
         <div id="wrap">
-
-        <div class="container">
+            <div class="container">
             @yield('content')
         </div> <!-- /container -->
 
@@ -48,7 +51,6 @@
 			    <div class="row">
 			      <div class="span12">
 			      	<div class="pull-right">
-
 			      		<a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ 'uploads/' . Session::get('hash') . '/poster.jpg' }}" data-text="Missing pet poster/flyer maker" data-via="findbackpets" data-count="none" data-hashtags="missingpet" data-dnt="true">Tweet</a>
 						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 						<div class="fb-like" data-href="{{ 'uploads/' . Session::get('hash') . '/poster.jpg' }}" data-send="false" data-width="300" data-show-faces="false" data-font="arial"></div>
@@ -59,12 +61,10 @@
 			</div>
         </div>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+        {{ HTML::script('http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js') }}
+        {{ HTML::script('js/vendor/bootstrap.min.js') }}
+        {{ HTML::script('js/main.js') }}
 
-        <script src="{{ url('js/vendor/bootstrap.min.js')}}"></script>
-
-        <script src="{{ url('js/main.js')}}"></script>
         @yield('scripts')
 	<!-- Piwik -->
 	<script type="text/javascript">

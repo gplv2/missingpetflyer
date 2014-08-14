@@ -28,6 +28,8 @@ Route::group(array('prefix' => $locale), function()
       //Route::get('{slug}', 'PageController@showPage');
 
       Route::get('/', array('as' => 'home', 'uses'=>'HomeController@getIndex'));
+      Route::get('/map', array('as' => 'map', 'uses'=>'MapController@getIndex'));
+      Route::get('/api', array('as' => 'api', 'uses'=>'ApiController@getIndex'));
 });
 
 Route::post('form',  array('before' => 'csrf','uses'=>'HomeController@postIndex'));
